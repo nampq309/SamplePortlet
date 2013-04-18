@@ -28,21 +28,27 @@ import javax.portlet.RenderResponse;
 
 public class SamplePortlet extends GenericPortlet {
   
+  //Constants of VIEW paths
+  private final String HELLO_VIEW = "/jsp/hello.jsp";
+  private final String WELCOME_VIEW = "/jsp/welcome.jsp";
+  private final String EDIT_VIEW = "/jsp/edit.jsp";
+  private final String HELP_VIEW = "/jsp/help.jsp";
+  
   public void doView(RenderRequest request, RenderResponse response) throws PortletException, IOException {
     String sYourName = (String) request.getParameter("yourname");
     if (sYourName != null) {
-        renderResponse(request, response, "/jsp/hello.jsp");
+        renderResponse(request, response, HELLO_VIEW);
     } else {
-        renderResponse(request, response, "/jsp/welcome.jsp");
+        renderResponse(request, response, WELCOME_VIEW);
     }
   }
   
   protected void doHelp(RenderRequest rRequest, RenderResponse rResponse) throws PortletException, IOException {
-    renderResponse(rRequest, rResponse, "/jsp/help.jsp");
+    renderResponse(rRequest, rResponse, HELP_VIEW);
   }
   
   protected void doEdit(RenderRequest rRequest, RenderResponse rResponse) throws PortletException, IOException {
-    renderResponse(rRequest, rResponse, "/jsp/edit.jsp");
+    renderResponse(rRequest, rResponse, EDIT_VIEW);
   }
 
   public void processAction(ActionRequest aRequest, ActionResponse aResponse) throws PortletException, IOException {
